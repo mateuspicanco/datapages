@@ -1,0 +1,40 @@
+{
+    "title": "Top 10 most sold product categories (2016 to 2018)",
+    "description": "Sales by product category from 2016 to 2018. Top 10 product categories considered.",
+    "instructions": {
+        "dimensions": ["product_category_name", "order_id"],
+        "type": "category",
+        "cat_field": "product_category_name",
+        "agg_field": "order_id",
+        "agg_operation": "count"
+    },
+"specs": {
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+    "name": "Bar chart of sum of payment values (revenues) for each seller by name",
+    "title": "Top 10 most sold product categories (2016 to 2018)",
+    "description": "Sales by product category from 2016 to 2018. Top 10 product categories considered.",
+    "width": 600,
+    "height": 400,
+    "layer": [{
+            "mark": {
+                "type": "bar",
+                "tooltip": true,
+                "color": "#ec8988"
+            },
+            "encoding": {
+                "x": {
+                    "field": "product_category_name",
+                    "type": "nominal",
+                    "title": "Product Category",
+                    "sort": "-y"
+                },
+                "y": {
+                    "field": "order_id",
+                    "type": "quantitative",
+                    "title": "Number of sales per product category"
+                }
+            }
+        }
+    ]
+}
+}

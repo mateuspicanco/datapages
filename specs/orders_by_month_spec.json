@@ -1,0 +1,56 @@
+{
+        "title": "Total monthly volume of orders since (2016 to 2018)",
+        "description": "Monthly volume of orders grouped by month, considering all sellers in the marketplace from 2016 to 2018.",
+        "instructions": {
+            "dimensions": ["order_purchase_timestamp", "order_id"],
+            "type": "timeseries",
+            "time_unit": "month",
+            "time_field": "order_purchase_timestamp",
+            "agg_field": "order_id",
+            "agg_operation": "count"
+        },
+    "specs": {
+        "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+        "name": "Bar chart of order_purchase_timestamp grouped by month in respect to order_id (unique values)",
+        "title": "Total monthly volume of orders since 2016",
+        "description": "Monthly volume of orders grouped by month, considering all sellers in the marketplace from 2016 to 2018.",
+        "width": 600,
+        "height": 400,
+        "layer": [{
+                "mark": {
+                    "type": "line",
+                    "tooltip": true,
+                    "color": "#81a0c2"
+                },
+                "encoding": {
+                    "x": {
+                        "field": "order_purchase_timestamp",
+                        "type": "temporal",
+                        "title": "Month and Year"
+                    },
+                    "y": {
+                        "field": "order_id",
+                        "type": "quantitative",
+                        "title": "Volume of Orders"
+                    }
+                }
+            },
+            {
+                "mark": {
+                    "type": "rule",
+                    "color": "#ec8988",
+                    "tooltip": true,
+                    "size": 3
+                },
+                "encoding": {
+                    "y": {
+                        "aggregate": "mean",
+                        "field": "order_id",
+                        "type": "quantitative",
+                        "title": "Mean volume of orders"
+                    }
+                }
+            }
+        ]
+    }
+}

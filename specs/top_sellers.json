@@ -1,0 +1,40 @@
+{
+    "title": "Top 10 sellers in the the platform (2016 to 2018)",
+    "description": "Total revenues from 2016 to 2018 from all sellers in the platform. Top 10 sellers considered.",
+    "instructions": {
+        "dimensions": ["seller_name", "price"],
+        "type": "category",
+        "cat_field": "seller_name",
+        "agg_field": "price",
+        "agg_operation": "sum"
+    },
+"specs": {
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+    "name": "Bar chart of sum of payment values (revenues) for each seller by name",
+    "title": "Top 10 sellers in the the platform (2016 to 2018)",
+    "description": "Total revenues from 2016 to 2018 from all sellers in the platform. Top 10 sellers considered.",
+    "width": 400,
+    "height": 400,
+    "layer": [{
+            "mark": {
+                "type": "bar",
+                "tooltip": true,
+                "color": "#ec8988"
+            },
+            "encoding": {
+                "x": {
+                    "field": "seller_name",
+                    "type": "nominal",
+                    "title": "Seller",
+                    "sort": "-y"
+                },
+                "y": {
+                    "field": "price",
+                    "type": "quantitative",
+                    "title": "Total revenue per seller"
+                }
+            }
+        }
+    ]
+}
+}
