@@ -2,7 +2,7 @@
 """
 A Data self-service search engine based on Streamlit and Elasticsearch with full-text search capabilities.
 Author: Mateus Picanco
-github: mateuspicanco
+github: https://github.com/mateuspicanco
 """
 
 # Data processing imports
@@ -45,7 +45,7 @@ def main():
 
     st.markdown(
         '''
-        [Data Index](https://github.com/mateuspicanco/streamlit-search-engine) is a *proof of concept* for a search engine based on the concept of **data self-service**.
+        [Data Pages](https://github.com/mateuspicanco/datapages) is a *proof of concept* for a search engine based on the concept of **data self-service**.
         With it, you can explore the [Olist Dataset](https://www.kaggle.com/olistbr/brazilian-ecommerce?select=olist_order_items_dataset.csv) in a interactive manner.
         Use the search bar below and start exploring Olist transactions, reviews and other kinds of data available. Here are a few suggestions for you to try out:
         - Top sellers
