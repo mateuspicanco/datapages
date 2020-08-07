@@ -1,15 +1,14 @@
 # -*- coding: utf-8 -*-
 """
-A Data self-service search engine based on Streamlit and Elasticsearch with full-text search capabilities.
+A Data self-service search engine based on Streamlit and Elasticsearch with full-text search capabilities. 
 Author: Mateus Picanco
 github: mateuspicanco
 """
 
-# Data processing imports
+# data processing imports
 import os
 import streamlit as st
 import pandas as pd
-import eland as ed
 from elasticsearch import Elasticsearch
 
 # custom classes and components
@@ -17,35 +16,36 @@ from components import ResultList, Download, Visualizer
 from searchutils import MultiMatchSearcher
 
 @st.cache(suppress_st_warning=True)
-def load_dataset(target_index):
-    """Loads data from Elasticsearch data store
+def load_dataset():
+    """Loads dataset locally for demo purposes - Hard-coded for the olist dataset for now
 
     Args:
-        target_index (str): index pattern to load data from
-
+        None
+    
     Returns:
-        pandas.DataFrame: dataframe containing the dataset
+        pandas.DataFrame: dataframe containing the dataset used for the demo (feather format)
+
     """
-    ed_df = ed.read_es(os.environ['ELASTIC_CLUSTER'], target_index)
-    return ed.eland_to_pandas(ed_df)
+    df = pd.read_feather('./data/olist_flat.ftr')
+    return df
 
 def main():
     """Executes the web app logic within Streamlit
 
-    Called when the program starts
+    Called when the program starts 
 
     Args:
         None
-
+    
     Returns:
         None
 
     """
-    st.title('Data Index :mag_right:')
+    st.title('Data Pages :mag_right:')
 
     st.markdown(
         '''
-        [Data Index](https://github.com/mateuspicanco/streamlit-search-engine) is a *proof of concept* for a search engine based on the concept of **data self-service**.
+        [Data Pages](https://github.com/mateuspicanco/datapages) is a *proof of concept* for a search engine based on the concept of **data self-service**.
         With it, you can explore the [Olist Dataset](https://www.kaggle.com/olistbr/brazilian-ecommerce?select=olist_order_items_dataset.csv) in a interactive manner.
         Use the search bar below and start exploring Olist transactions, reviews and other kinds of data available. Here are a few suggestions for you to try out:
         - Top sellers
@@ -55,13 +55,13 @@ def main():
     )
 
     # instantiate objects clients and search objects
-    es_client = Elasticsearch(os.environ['ELASTIC_CLUSTER'])
+    es_client = Elasticsearch(os.environ['BONSAI'])
 
-    # decided to user the multi match search while boosting description
-    searcher = MultiMatchSearcher(es_client, os.environ['ELASTIC_CLUSTER'], os.environ['DIRECTORY'])
+    # decided to user the multi match search while boosting description 
+    searcher = MultiMatchSearcher(es_client, os.environ['BONSAI'], os.environ['DIRECTORY'])
 
     # loading the dataset from Elasticsearch data store
-    df = load_dataset(os.environ['DATA_INDEX'])
+    df = load_dataset()
 
 
     search_bar = st.text_input('What kind of information are you looking for?', key='SearchBar')
@@ -78,7 +78,7 @@ def main():
         # establishing a limit for search results for the proof of concept (decided on 5 records)
         search_limit = 5
 
-        if(len(hits) != 0):
+        if(len(hits) != 0): 
             st.write(f'Your search for **{search_bar}** returned **{len(hits)}** result(s)')
             if(len(hits) > search_limit):
                 st.info(f'Showing only the first {limit} results for **{search_bar}**')
@@ -86,7 +86,7 @@ def main():
             result_list.display_search_results(limit=search_limit)
 
             # retrieving references for the results so that the vega specs can be called back
-            references = result_list.get_index_references(search_limit)
+            references = result_list.get_index_references(search_limit) 
             results_bar = st.selectbox(label='Please choose what data source would like to explore',
                                     options=list(references.keys()),
                                     key='ResultsBar')
@@ -100,7 +100,7 @@ def main():
                 # # generating visualizations
                 plot_type = plot_ref['instructions']['type']
 
-                # Visualizer takes the data and the spec
+                # Visualizer takes the data and the spec 
                 visualizer = Visualizer(df, plot_ref)
                 visualizer.display_visualization(limit=10)
 

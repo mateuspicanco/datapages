@@ -1,4 +1,5 @@
 {
+    "spec_id": "top_sellers",
     "title": "Top 10 sellers in the the platform (2016 to 2018)",
     "description": "Total revenues from 2016 to 2018 from all sellers in the platform. Top 10 sellers considered.",
     "instructions": {

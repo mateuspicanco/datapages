@@ -1,0 +1,41 @@
+{
+    "spec_id": "states_with_most_orders",
+    "title": "Number of orders per state (2016 to 2018)",
+    "description": "Sales by customer state, showing case which states have the most number of orders",
+    "instructions": {
+        "dimensions": ["customer_state", "order_id"],
+        "type": "category",
+        "cat_field": "customer_state",
+        "agg_field": "order_id",
+        "agg_operation": "count"
+    },
+"specs": {
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+    "name": "Bar chart of count of orders per state",
+    "title": "Orders by State",
+    "description": "Sales customer state from 2016 to 2018. Top 10 states considered.",
+    "width": 600,
+    "height": 400,
+    "layer": [{
+            "mark": {
+                "type": "bar",
+                "tooltip": true,
+                "color": "#ec8988"
+            },
+            "encoding": {
+                "x": {
+                    "field": "customer_state",
+                    "type": "nominal",
+                    "title": "Customer's State",
+                    "sort": "-y"
+                },
+                "y": {
+                    "field": "order_id",
+                    "type": "quantitative",
+                    "title": "Number of sales per state"
+                }
+            }
+        }
+    ]
+}
+}
