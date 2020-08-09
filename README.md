@@ -2,7 +2,7 @@
 
 ![](streamlit_search_engine_demo_full.gif)
 
-This project is a **proof of concept** for data exploration of enterprise data by non-technical users using full-text search engine capabilities. It aims to illustrate a way to foster data-driven decision-making without the intervention of technical teams, a concept known as [data self-service](https://devops.com/how-to-implement-a-data-self-service-program/). It was inspired by [Looqbox](https://www.looqbox.com/), a Brazilian startup.
+This project is a **proof of concept** for data exploration of enterprise data by non-technical users using full-text search engine capabilities. It aims to illustrate a way to foster data-driven decision-making without the intervention of technical teams, a concept known as [Data Self-Service](https://devops.com/how-to-implement-a-data-self-service-program/). It was inspired by [Looqbox](https://www.looqbox.com/), a Brazilian startup.
 
 **Data Pages** consists of guided access to analysis previously made available by technical teams as specifications in a data directory. The search engine capabilities provide a cleaner interface to find relevant data about the company, an alternative to list-based directories and generic dashboards.
 
@@ -12,7 +12,7 @@ Businesses are more likely to thrive when decisions are made based on the correc
 
 Imagine you are a part of the marketing team and need information about who are your best customers so you can make them a special offer. Where would you find that? How many people do you think you would have to talk to under normal circumstances to find the data you need? How long do you think that endeavor would take? In many big, bureaucratic companies, this is not a trivial task.
 
-In such settings, when an organization has mature data management systems, the concept of **Data Self-service** becomes a lot more relevant. With a self-service platform available, employees would be able easily and quickly find relevant information, improving time-to-market in a variety of business scenarios. Access to the comprehensive, curated information about your company can also improve the effectiveness of business decisions, mitigating inappropriate offers from the marketing department, for example.
+In such settings, when an organization has mature data management systems, the concept of **Data Self-Service** becomes a lot more relevant. With a self-service platform available, employees would be able easily and quickly find relevant information, improving time-to-market in a variety of business scenarios. Access to the comprehensive, curated information about your company can also improve the effectiveness of business decisions, mitigating inappropriate offers from the marketing department, for example.
 
 To implement such a system, though, is not easy. There needs to be the right kinds of abstractions in place so that non-technical users can find the information they are looking for in a scalable way. That's where the idea of a search engine can help us. Search engines have very simple interfaces. They inquiry the user to express themselves actively about what kind of information they are looking for. Since most people had contact with products like Google or Bing at least once, search engines are also very familiar to the non-technical user. **Data Pages** tries to bridge this gap of available information and being able to get to this information faster by mirroring the experience of search engines in a data analytics setting, implementing data visualization based on specifications instead of code.
 
